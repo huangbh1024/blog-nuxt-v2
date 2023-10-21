@@ -37,7 +37,7 @@
 						class="hover:scale-110 transition-all ease-out hover:cursor-pointer"
 						@click="toogleTheme"
 					>
-						测试主题切换
+						<Icon :name="isDark ? 'icon-park:moon' : 'noto:sun'" size="20" />
 					</button>
 				</li>
 			</ul>
@@ -48,12 +48,15 @@
 <script lang="ts" setup>
 const route = useRoute();
 const path = computed(() => route.fullPath.replace("/", ""));
-const isDark = usePreferredDark();
+
+const isDark = ref(false);
+let _isDark: boolean;
 const toggleDark = () => {
 	const root = document.documentElement;
-	isDark.value = root.classList.contains("dark");
-	root.classList.remove(isDark.value ? "dark" : "light");
-	root.classList.add(isDark.value ? "light" : "dark");
+	_isDark = root.classList.contains("dark");
+	isDark.value = !_isDark;
+	root.classList.remove(_isDark ? "dark" : "light");
+	root.classList.add(_isDark ? "light" : "dark");
 };
 const toggleViewTransition = (event: MouseEvent) => {
 	const x = event.clientX;
@@ -74,12 +77,12 @@ const toggleViewTransition = (event: MouseEvent) => {
 	transition.ready.then(() => {
 		document.documentElement.animate(
 			{
-				clipPath: isDark.value ? [...clipPath].reverse() : clipPath
+				clipPath: _isDark ? [...clipPath].reverse() : clipPath
 			},
 			{
 				duration: 300,
 				easing: "ease-in",
-				pseudoElement: isDark.value
+				pseudoElement: _isDark
 					? "::view-transition-old(root)"
 					: "::view-transition-new(root)"
 			}
@@ -87,8 +90,8 @@ const toggleViewTransition = (event: MouseEvent) => {
 	});
 };
 const toogleTheme = (event: MouseEvent) => {
-	// @ts-expect-error: Transition API
 	const isSupport =
+		// @ts-expect-error: Transition API
 		document.startViewTransition &&
 		!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
