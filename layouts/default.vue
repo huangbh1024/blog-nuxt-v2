@@ -4,9 +4,8 @@
 			<MainHeader />
 		</header>
 		<main>
-			<div class="p-9">
-				<slot />
-			</div>
+			<div class="p-9"></div>
+			<slot />
 		</main>
 		<footer></footer>
 	</div>
