@@ -17,21 +17,36 @@ html.dark {
 	mix-blend-mode: normal;
 	animation: none;
 }
-
 /* 进入dark模式和退出dark模式时，两个图像的位置顺序正好相反 */
 .dark::view-transition-old(root) {
 	z-index: 1;
 }
-
 .dark::view-transition-new(root) {
 	z-index: 999;
 }
-
 ::view-transition-old(root) {
 	z-index: 999;
 }
-
 ::view-transition-new(root) {
 	z-index: 1;
+}
+.page-enter-active,
+.page-leave-active {
+	transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+	opacity: 0;
+	filter: blur(1rem);
+}
+
+.layout-enter-active,
+.layout-leave-active {
+	transition: all 0.4s;
+}
+.layout-enter-from,
+.layout-leave-to {
+	opacity: 0;
+	filter: blur(1rem);
 }
 </style>
