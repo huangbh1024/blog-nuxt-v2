@@ -6,31 +6,18 @@
 			<ul class="flex items-baseline space-x-5">
 				<li class="text-base sm:text-2xl font-bold">
 					<NuxtLink to="/" :class="{ underline: path === '' }">
-						黄某人's Blog
+						{{ siteConfig.siteName }}
 					</NuxtLink>
 				</li>
 			</ul>
 			<ul class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-lg">
-				<li>
-					<NuxtLink to="/blogs" :class="{ underline: path === 'blogs' }">
-						博客
-					</NuxtLink>
-				</li>
-				<li>
+				<li v-for="menu in siteConfig.menuList" :key="menu.key">
 					<NuxtLink
-						to="/categories"
-						:class="{ underline: path === 'categories' }"
+						:to="`/${menu.path}`"
+						:class="{ underline: path === menu.path }"
 					>
-						分类
+						{{ menu.name }}
 					</NuxtLink>
-				</li>
-				<li>
-					<NuxtLink to="/archives" :class="{ undefline: path === 'archives' }">
-						归档
-					</NuxtLink>
-				</li>
-				<li title="About Me" :class="{ underline: path === 'about' }">
-					<NuxtLink to="/about" aria-label="About me"> 关于 </NuxtLink>
 				</li>
 				<li>
 					<button
@@ -46,6 +33,7 @@
 </template>
 
 <script lang="ts" setup>
+import { siteConfig } from "~/configs/site.config";
 const route = useRoute();
 const path = computed(() => route.fullPath.replace("/", ""));
 
