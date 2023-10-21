@@ -5,5 +5,11 @@ export const siteConfig = {
 		{ key: 1, name: "分类", path: "categories" },
 		{ key: 2, name: "归档", path: "archives" },
 		{ key: 3, name: "关于", path: "about" }
-	]
+	],
+	indexInfo: {
+		title: "Welcome To My Blog Site",
+		content: "这边后续换成一言，实现文字打印效果",
+		recent: "近况",
+		trending: "热门"
+	}
 };
