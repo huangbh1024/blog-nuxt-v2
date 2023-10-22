@@ -13,8 +13,9 @@ export default defineNuxtConfig({
 		layoutTransition: { name: "layout", mode: "out-in" }
 	},
 	colorMode: {
-		preference: 'system',
-		fallback: 'light',
-		classSuffix: '',
+		preference: "system",
+		fallback: "light",
+		classSuffix: "",
+		dataValue: "theme"
 	}
 });

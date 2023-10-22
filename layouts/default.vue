@@ -1,5 +1,6 @@
 <template>
 	<div class="gd-container font-spacegrotesk">
+		<MainColorMode />
 		<header class="fixed w-full bg-[#F1F2F4] dark:bg-[#151818] z-10">
 			<MainHeader />
 		</header>

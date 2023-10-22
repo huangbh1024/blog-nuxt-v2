@@ -27,6 +27,7 @@
 		"commitizen": "^4.3.0",
 		"commitlint-config-cz": "^0.13.3",
 		"cz-customizable": "^7.0.0",
+		"daisyui": "^3.9.3",
 		"eslint": "^8.47.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-vue": "^9.17.0",
