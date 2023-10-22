@@ -37,7 +37,7 @@
 import { siteConfig } from "~/configs/site.config";
 const recentPostData = [
 	{
-		path: "/article/1",
+		path: "/blogs/1",
 		title: "如何构建响应式网站",
 		description: "学习使用HTML和CSS构建响应式网站的基础知识。",
 		image: "图片1.jpg",
@@ -48,7 +48,7 @@ const recentPostData = [
 		published: true
 	},
 	{
-		path: "/article/2",
+		path: "/blogs/2",
 		title: "入门JavaScript",
 		description: "针对网页开发的JavaScript编程的初学者指南。",
 		image: "图片2.jpg",
@@ -59,7 +59,7 @@ const recentPostData = [
 		published: true
 	},
 	{
-		path: "/article/3",
+		path: "/blogs/3",
 		title: "TypeScript基础知识",
 		description: "探讨TypeScript的基础知识以及对开发人员的好处。",
 		image: "图片3.jpg",
