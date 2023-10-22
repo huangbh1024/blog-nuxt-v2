@@ -5,6 +5,7 @@
 		<p class="text-black dark:text-zinc-300 text-base font-semibold">
 			快速向导
 		</p>
+		<NuxtLink class="hover:underline" to="/">首页</NuxtLink>
 		<NuxtLink
 			v-for="menu in siteConfig.menuList"
 			:key="menu.name"
