@@ -25,6 +25,9 @@ devDependencies:
   '@nuxt/devtools':
     specifier: latest
     version: registry.npmmirror.com/@nuxt/devtools@1.0.0(nuxt@3.7.4)(vite@4.5.0)
+  '@nuxtjs/color-mode':
+    specifier: ^3.3.0
+    version: registry.npmmirror.com/@nuxtjs/color-mode@3.3.0
   '@nuxtjs/eslint-config-typescript':
     specifier: ^12.0.0
     version: registry.npmmirror.com/@nuxtjs/eslint-config-typescript@12.1.0(eslint@8.51.0)(typescript@5.2.2)
@@ -1940,6 +1943,19 @@ packages:
       - vls
       - vti
       - vue-tsc
+    dev: true
+
+  registry.npmmirror.com/@nuxtjs/color-mode@3.3.0:
+    resolution: {integrity: sha512-YVFNmTISke1eL7uk5p9I1suOsM222FxrqKoF13HS4x94OKCWwPLLeTCEzHZ8orzKnaFUbCXpuL4pRv8gvW+0Kw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxtjs/color-mode/-/color-mode-3.3.0.tgz}
+    name: '@nuxtjs/color-mode'
+    version: 3.3.0
+    dependencies:
+      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit@3.7.4
+      lodash.template: registry.npmmirror.com/lodash.template@4.5.0
+      pathe: registry.npmmirror.com/pathe@1.1.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   registry.npmmirror.com/@nuxtjs/eslint-config-typescript@12.1.0(eslint@8.51.0)(typescript@5.2.2):
@@ -8007,6 +8023,12 @@ packages:
       p-locate: registry.npmmirror.com/p-locate@5.0.0
     dev: true
 
+  registry.npmmirror.com/lodash._reinterpolate@3.0.0:
+    resolution: {integrity: sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz}
+    name: lodash._reinterpolate
+    version: 3.0.0
+    dev: true
+
   registry.npmmirror.com/lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz}
     name: lodash.camelcase
@@ -8095,6 +8117,23 @@ packages:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.startcase/-/lodash.startcase-4.4.0.tgz}
     name: lodash.startcase
     version: 4.4.0
+    dev: true
+
+  registry.npmmirror.com/lodash.template@4.5.0:
+    resolution: {integrity: sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.template/-/lodash.template-4.5.0.tgz}
+    name: lodash.template
+    version: 4.5.0
+    dependencies:
+      lodash._reinterpolate: registry.npmmirror.com/lodash._reinterpolate@3.0.0
+      lodash.templatesettings: registry.npmmirror.com/lodash.templatesettings@4.2.0
+    dev: true
+
+  registry.npmmirror.com/lodash.templatesettings@4.2.0:
+    resolution: {integrity: sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz}
+    name: lodash.templatesettings
+    version: 4.2.0
+    dependencies:
+      lodash._reinterpolate: registry.npmmirror.com/lodash._reinterpolate@3.0.0
     dev: true
 
   registry.npmmirror.com/lodash.uniq@4.5.0:

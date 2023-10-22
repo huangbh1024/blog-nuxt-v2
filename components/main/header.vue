@@ -20,12 +20,27 @@
 					</NuxtLink>
 				</li>
 				<li>
-					<button
-						class="hover:scale-110 transition-all ease-out hover:cursor-pointer"
-						@click="toogleTheme"
-					>
-						<Icon :name="isDark ? 'icon-park:moon' : 'noto:sun'" size="20" />
-					</button>
+					<ClientOnly>
+						<button
+							class="hover:scale-110 transition-all ease-out hover:cursor-pointer"
+							@click="toogleTheme"
+						>
+							<Icon
+								v-if="colorMode.value === 'dark'"
+								name="icon-park:moon"
+								size="20"
+							/>
+							<Icon
+								v-else-if="colorMode.value === 'light'"
+								name="noto:sun"
+								size="20"
+							/>
+						</button>
+						<template #fallback>
+							<!-- this will be rendered on server side -->
+							<Icon name="svg-spinners:180-ring" size="20" />
+						</template>
+					</ClientOnly>
 				</li>
 			</ul>
 		</div>
@@ -37,12 +52,13 @@ import { siteConfig } from "~/configs/site.config";
 const route = useRoute();
 const path = computed(() => route.fullPath.replace("/", ""));
 
-const isDark = ref(false);
+const colorMode = useColorMode();
+
 let _isDark: boolean;
 const toggleDark = () => {
 	const root = document.documentElement;
 	_isDark = root.classList.contains("dark");
-	isDark.value = !_isDark;
+	colorMode.preference = _isDark ? "light" : "dark";
 	root.classList.remove(_isDark ? "dark" : "light");
 	root.classList.add(_isDark ? "light" : "dark");
 };
