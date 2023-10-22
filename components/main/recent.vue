@@ -26,7 +26,7 @@
 					:published="post.published"
 				/>
 			</template>
-			<template v-if="recentPostData.length === 0">
+			<template v-if="recentPostData?.length === 0">
 				<BlogEmpty />
 			</template>
 		</div>
@@ -34,40 +34,32 @@
 </template>
 
 <script lang="ts" setup>
+import dayjs from "dayjs";
 import { siteConfig } from "~/configs/site.config";
-const recentPostData = [
-	{
-		path: "/blogs/1",
-		title: "如何构建响应式网站",
-		description: "学习使用HTML和CSS构建响应式网站的基础知识。",
-		image: "图片1.jpg",
-		alt: "响应式网站",
-		ogImage: "og-图片1.jpg",
-		date: "2023-10-15",
-		tags: ["Web开发", "HTML", "CSS"],
-		published: true
-	},
-	{
-		path: "/blogs/2",
-		title: "入门JavaScript",
-		description: "针对网页开发的JavaScript编程的初学者指南。",
-		image: "图片2.jpg",
-		alt: "JavaScript 代码",
-		ogImage: "og-图片2.jpg",
-		date: "2023-10-12",
-		tags: ["Web开发", "JavaScript"],
-		published: true
-	},
-	{
-		path: "/blogs/3",
-		title: "TypeScript基础知识",
-		description: "探讨TypeScript的基础知识以及对开发人员的好处。",
-		image: "图片3.jpg",
-		alt: "TypeScript 标志",
-		ogImage: "og-图片3.jpg",
-		date: "2023-10-08",
-		tags: ["Web开发", "TypeScript"],
-		published: true
-	}
-];
+const { data } = await useAsyncData<{
+	records: {
+		id: number;
+		title: string;
+		description: string;
+		image: string;
+		content: string;
+		tags: string;
+		createDate: string;
+		isPublish: boolean;
+	}[];
+}>("recentPosts", () =>
+	$fetch("http://120.77.170.152:7001/blog", { method: "GET" })
+);
+const recentPostData = computed(
+	() =>
+		data.value?.records.map(item => ({
+			...item,
+			path: `/blogs/${item.id}`,
+			date: dayjs(item.createDate).format("YYYY-MM-DD"),
+			tags: item.tags.split(","),
+			alt: item.title,
+			ogImage: item.image,
+			published: item.isPublish
+		})) ?? []
+);
 </script>
