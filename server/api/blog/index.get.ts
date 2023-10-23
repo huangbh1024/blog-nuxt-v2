@@ -6,11 +6,12 @@ export default defineEventHandler(async event => {
 		page = 1,
 		size = 3,
 		orderBy = "createdAt",
-		order = "ASC"
+		order = "ASC",
+		keyword = ""
 	} = getQuery(event);
 	const res = await $fetch(`${baseURL}/blog`, {
 		method: "GET",
-		query: { page, size, orderBy, order }
+		query: { page, size, orderBy, order, keyword }
 	});
 	return res;
 });

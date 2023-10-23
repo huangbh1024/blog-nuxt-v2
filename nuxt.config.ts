@@ -6,7 +6,8 @@ export default defineNuxtConfig({
 		"@vueuse/nuxt",
 		"nuxt-icon",
 		"@nuxt/image",
-		"@nuxtjs/color-mode"
+		"@nuxtjs/color-mode",
+		"nuxt-lodash"
 	],
 	app: {
 		pageTransition: { name: "page", mode: "out-in" },

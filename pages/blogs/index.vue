@@ -3,6 +3,7 @@
 		<BlogHero />
 		<div class="px-3">
 			<input
+				v-model="keyword"
 				placeholder="Search"
 				type="text"
 				class="block w-full bg-[#F1F2F4] dark:bg-zinc-800 dark:placeholder-zinc-500 text-zinc-300 rounded-md border-gray-300 dark:border-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -52,13 +53,14 @@ import dayjs from "dayjs";
 import type { Blog } from "~/types/blog";
 const size = ref(3);
 const page = ref(1);
+const keyword = ref("");
 const { data, refresh } = await useAsyncData<{
 	records: Blog[];
 	total: number;
 }>("postList", () =>
 	$fetch("/api/blog", {
 		method: "GET",
-		query: { page: page.value, size: size.value }
+		query: { page: page.value, size: size.value, keyword: keyword.value }
 	})
 );
 const postData = computed(
@@ -70,6 +72,12 @@ const postData = computed(
 			alt: item.title
 		})) ?? []
 );
+const search = useDebounce(() => refresh(), 500);
+watch(keyword, () => {
+	page.value = 1;
+	// 防抖 防止接口请求过多
+	search();
+});
 const totalPost = computed(() => data.value?.total ?? 0);
 const totalPage = computed(() => {
 	if (totalPost.value <= size.value) return 1;
