@@ -9,20 +9,10 @@
 	</main>
 </template>
 <script lang="ts" setup>
-const topics = [
-	"javascript",
-	"typescript",
-	"git",
-	"docker",
-	"kubernetes",
-	"vue",
-	"nuxt",
-	"pinia",
-	"vuex",
-	"firebase",
-	"supabse",
-	"cypress",
-	"vercel",
-	"namecheap"
-];
+import type { Category } from "~/types/category";
+const { data } = await useAsyncData<{ records: Category[]; total: number }>(
+	"categories",
+	() => $fetch("/api/category", { method: "GET" })
+);
+const topics = computed(() => data.value?.records.map(item => item.name) ?? []);
 </script>

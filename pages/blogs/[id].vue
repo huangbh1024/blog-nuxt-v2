@@ -5,7 +5,7 @@
 				:title="detail.title"
 				:image="detail.image"
 				:alt="detail.alt"
-				:date="detail.date"
+				:created-at="detail.createdAt"
 				:description="detail.description"
 				:tags="detail.tags"
 			/>
@@ -21,27 +21,17 @@
 <script lang="ts" setup>
 import dayjs from "dayjs";
 import { parse } from "./parse";
+import type { Blog } from "~/types/blog";
 const route = useRoute();
 const id = computed(() => Number(route.params.id as string));
-const { data } = await useAsyncData<{
-	id: number;
-	title: string;
-	description: string;
-	image: string;
-	content: string;
-	tags: string;
-	createDate: string;
-	isPublish: boolean;
-}>("postDetail", () =>
-	$fetch("http://120.77.170.152:7001/blog/" + id.value, { method: "GET" })
+const { data } = await useAsyncData<Blog>("detail", () =>
+	$fetch(`/api/blog/${id.value}`, { method: "GET" })
 );
+
 const detail = computed(() => ({
 	...data.value,
-	date: dayjs(data.value?.createDate).format("YYYY-MM-DD"),
-	tags: data.value?.tags.split(","),
-	alt: data.value?.title,
-	ogImage: data.value?.image,
-	published: data.value?.isPublish
+	createdAt: dayjs(data.value?.createdAt).format("YYYY-MM-DD"),
+	alt: data.value?.title
 }));
 // 字符串的 /n 转义
 const content = parse(detail.value!.content!.replace(/\\n/g, "\n"));

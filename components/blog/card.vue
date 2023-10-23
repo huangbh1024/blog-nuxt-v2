@@ -2,25 +2,21 @@
 interface Props {
 	path: string;
 	title: string;
-	date: string;
+	createdAt: string;
 	description: string;
 	image: string;
-	alt: string;
-	ogImage: string;
 	tags: Array<string>;
-	published: boolean;
+	alt: string;
 }
 
 withDefaults(defineProps<Props>(), {
 	path: "/",
 	title: "",
-	date: "",
+	createdAt: "",
 	description: "",
 	image: "",
-	alt: "",
-	ogImage: "",
 	tags: () => [],
-	published: false
+	alt: ""
 });
 </script>
 
@@ -38,7 +34,7 @@ withDefaults(defineProps<Props>(), {
 				<div class="text-black dark:text-zinc-300 pt-3 pb-2">
 					<div class="flex items-center">
 						<LogoDate />
-						{{ date }}
+						{{ createdAt }}
 					</div>
 					<div class="flex items-center gap-1 flex-wrap">
 						<LogoTag />
@@ -58,7 +54,7 @@ withDefaults(defineProps<Props>(), {
 				<div
 					class="flex group-hover:underline text-sky-700 dark:text-sky-400 items-center py-2"
 				>
-					<p>Read More</p>
+					<p>阅读更多</p>
 					<LogoArrow />
 				</div>
 			</div>

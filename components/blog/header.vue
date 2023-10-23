@@ -21,7 +21,7 @@
 			>
 				<div class="flex items-center font-semibold">
 					<LogoDate />
-					<p>{{ date || "" }}</p>
+					<p>{{ createdAt || "" }}</p>
 				</div>
 				<div class="flex items-center gap-2 flex-wrap my-5">
 					<LogoTag />
@@ -42,16 +42,16 @@ interface Props {
 	image: string;
 	alt: string;
 	description: string;
-	date: string;
+	createdAt: string;
 	tags: Array<string>;
 }
 
 withDefaults(defineProps<Props>(), {
-	title: "no-title",
-	image: "#",
-	alt: "no-img",
-	description: "no description",
-	date: "no-date",
+	title: "",
+	image: "",
+	alt: "",
+	description: "",
+	date: "",
 	tags: () => []
 });
 </script>

@@ -5,11 +5,10 @@
 				<h1
 					class="text-black dark:text-zinc-300 font-semibold leading-tight text-4xl md:text-5xl my-5"
 				>
-					Categories
+					{{ siteConfig.categoryInfo.title ?? "分类" }}
 				</h1>
 				<p class="dark:text-zinc-300">
-					Blow All the topics are listed on which either I have written a blog
-					or will write a blog in near future.
+					{{ siteConfig.categoryInfo.content ?? "" }}
 				</p>
 			</div>
 			<div class="px-6 justify-self-center">
@@ -18,3 +17,7 @@
 		</div>
 	</div>
 </template>
+
+<script lang="ts" setup>
+import { siteConfig } from "~/configs/site.config";
+</script>

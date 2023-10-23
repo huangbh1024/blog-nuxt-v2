@@ -5,11 +5,10 @@
 				<h1
 					class="text-black dark:text-zinc-300 font-semibold leading-tight text-4xl md:text-5xl my-5"
 				>
-					All Blogs
+					{{ siteConfig.blogInfo.title ?? "博客" }}
 				</h1>
 				<p class="dark:text-zinc-300">
-					Here you will find all the blog posts I have written & published on
-					this site.
+					{{ siteConfig.blogInfo.content ?? "" }}
 				</p>
 			</div>
 			<div class="px-6 justify-self-center">
@@ -18,3 +17,7 @@
 		</div>
 	</div>
 </template>
+
+<script lang="ts" setup>
+import { siteConfig } from "~/configs/site.config";
+</script>

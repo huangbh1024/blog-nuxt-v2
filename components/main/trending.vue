@@ -17,13 +17,11 @@
 				<BlogArchive
 					:path="post.path"
 					:title="post.title"
-					:date="post.date"
+					:created-at="post.createdAt"
 					:description="post.description"
 					:image="post.image"
 					:alt="post.alt"
-					:og-image="post.ogImage"
 					:tags="post.tags"
-					:published="post.published"
 				/>
 			</template>
 			<template v-if="postData.length === 0">
@@ -36,30 +34,22 @@
 <script lang="ts" setup>
 import dayjs from "dayjs";
 import { siteConfig } from "~/configs/site.config";
-const { data } = await useAsyncData<{
-	records: {
-		id: number;
-		title: string;
-		description: string;
-		image: string;
-		content: string;
-		tags: string;
-		createDate: string;
-		isPublish: boolean;
-	}[];
-}>("trendingPosts", () =>
-	$fetch("http://120.77.170.152:7001/blog", { method: "GET" })
+import type { Blog } from "~/types/blog";
+const { data } = await useAsyncData<{ records: Blog[]; total: number }>(
+	"trendingPosts",
+	() =>
+		$fetch("/api/blog", {
+			method: "GET",
+			query: { page: 1, size: 3, orderBy: "viewCount", order: "DESC" }
+		})
 );
 const postData = computed(
 	() =>
 		data.value?.records.map(item => ({
 			...item,
 			path: `/blogs/${item.id}`,
-			date: dayjs(item.createDate).format("YYYY-MM-DD"),
-			tags: item.tags.split(","),
-			alt: item.title,
-			ogImage: item.image,
-			published: item.isPublish
+			createdAt: dayjs(item.createdAt).format("YYYY-MM-DD"),
+			alt: item.title
 		})) ?? []
 );
 </script>
