@@ -1,5 +1,5 @@
 {
-	"name": "nuxt-app",
+	"name": "blog-nuxt-v2",
 	"private": true,
 	"scripts": {
 		"build": "nuxt build",
