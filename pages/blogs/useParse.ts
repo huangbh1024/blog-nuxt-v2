@@ -23,7 +23,9 @@ hljs.registerLanguage("scss", scss);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("typescript", typescript);
 hljs.registerLanguage("java", java);
+
 const marked = new Marked(
+	{ gfm: true },
 	markedHighlight({
 		langPrefix: "hljs language-",
 		highlight(code, lang) {
@@ -33,4 +35,19 @@ const marked = new Marked(
 	})
 );
 
-export const parse = (str: string) => marked.parse(str);
+const renderer = new marked.Renderer();
+type TableOfContents = { level: number; text: string; id: string }[];
+export const useParse = (content: string) => {
+	const tableOfContents = ref<TableOfContents>([]);
+	renderer.heading = (text, level) => {
+		const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
+		tableOfContents.value.push({
+			level,
+			text,
+			id: escapedText
+		});
+		return `<h${level} id="${escapedText}">${text}</h${level}>`;
+	};
+	const parseHtml = marked.parse(content, { renderer });
+	return { tableOfContents, parseHtml };
+};
