@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@formkit/auto-animate':
+    specifier: ^0.8.0
+    version: registry.npmmirror.com/@formkit/auto-animate@0.8.0
   '@nuxt/image':
     specifier: ^1.0.0
     version: registry.npmmirror.com/@nuxt/image@1.0.0
@@ -34,9 +37,6 @@ devDependencies:
   '@commitlint/config-conventional':
     specifier: ^17.7.0
     version: registry.npmmirror.com/@commitlint/config-conventional@17.8.0
-  '@formkit/auto-animate':
-    specifier: ^0.8.0
-    version: registry.npmmirror.com/@formkit/auto-animate@0.8.0
   '@nuxt/devtools':
     specifier: latest
     version: registry.npmmirror.com/@nuxt/devtools@1.0.0(nuxt@3.7.4)(vite@4.5.0)
@@ -112,6 +112,9 @@ devDependencies:
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
+  vue-gtag-next:
+    specifier: ^1.14.0
+    version: registry.npmmirror.com/vue-gtag-next@1.14.0(vue@3.3.4)
   vue-router:
     specifier: ^4.2.5
     version: registry.npmmirror.com/vue-router@4.2.5(vue@3.3.4)
@@ -1356,7 +1359,7 @@ packages:
     resolution: {integrity: sha512-G8f7489ka0mWyi+1IEZT+xgIwcpWtRMmE2x+IrVoQ+KM1cP6VDj/TbujZjwxdb0P8w8b16/qBfViRmydbYHwMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@formkit/auto-animate/-/auto-animate-0.8.0.tgz}
     name: '@formkit/auto-animate'
     version: 0.8.0
-    dev: true
+    dev: false
 
   registry.npmmirror.com/@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.11.11.tgz}
@@ -13040,6 +13043,17 @@ packages:
       semver: registry.npmmirror.com/semver@7.5.4
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  registry.npmmirror.com/vue-gtag-next@1.14.0(vue@3.3.4):
+    resolution: {integrity: sha512-iJl+cOG2GU5NuxqzSSIpt03WVOvZqyKB9TOy7d55KiuvRklcnb2nlqxW5B/a3/sbIt7fla+XEkRyMCcoz0zAHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-gtag-next/-/vue-gtag-next-1.14.0.tgz}
+    id: registry.npmmirror.com/vue-gtag-next/1.14.0
+    name: vue-gtag-next
+    version: 1.14.0
+    peerDependencies:
+      vue: ^3.0.0-rc.11
+    dependencies:
+      vue: registry.npmmirror.com/vue@3.3.4
     dev: true
 
   registry.npmmirror.com/vue-router@4.2.5(vue@3.3.4):
