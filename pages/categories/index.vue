@@ -3,16 +3,14 @@
 		<CategoryHero />
 		<div class="flex flex-wrap px-6 mt-12 gap-3">
 			<template v-for="topic in topics" :key="topic">
-				<CategoryCard :title="topic" />
+				<CategoryCard :id="topic.id" :title="topic.name" />
 			</template>
 		</div>
 	</main>
 </template>
 <script lang="ts" setup>
-import type { Category } from "~/types/category";
-const { data } = await useAsyncData<{ records: Category[]; total: number }>(
-	"categories",
-	() => $fetch("/api/category", { method: "GET" })
+const { data } = await useAsyncData("categories", () =>
+	$fetch("/api/category", { method: "GET" })
 );
-const topics = computed(() => data.value?.records.map(item => item.name) ?? []);
+const topics = computed(() => data.value?.records ?? []);
 </script>

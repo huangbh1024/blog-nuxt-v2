@@ -3,22 +3,18 @@
 		class="text-[#F1F2F4] px-5 py-3 rounded hover:underline hover:scale-[1.05] transition-all duration-500"
 		:style="{ background: picAColor }"
 	>
-		<NuxtLink
-			:to="`/categories/${title.toLocaleLowerCase()}`"
-			class="text-xl font-extrabold"
-		>
+		<NuxtLink :to="`/categories/${id}`" class="text-xl font-extrabold">
 			<h1>#{{ title }}</h1>
 		</NuxtLink>
 	</div>
 </template>
 <script setup lang="ts">
 interface Props {
+	id: number;
 	title: string;
 }
 
-withDefaults(defineProps<Props>(), {
-	title: "No title available"
-});
+defineProps<Props>();
 
 // some random color for tags
 const color = [
