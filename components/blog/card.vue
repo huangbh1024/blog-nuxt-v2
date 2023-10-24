@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 interface Props {
-	path: string;
-	title: string;
-	createdAt: string;
-	description: string;
-	image: string;
-	tags: Array<string>;
-	alt: string;
+	path?: string;
+	title?: string;
+	createdAt?: string;
+	description?: string;
+	image?: string;
+	tags?: Array<string>;
+	alt?: string;
 }
 
 withDefaults(defineProps<Props>(), {
 	path: "/",
-	title: "",
-	createdAt: "",
-	description: "",
-	image: "",
+	title: "没有找到相关内容",
+	createdAt: "...",
+	description: "没有找到相关内容",
+	image: "/not-found.jpg",
 	tags: () => [],
-	alt: ""
+	alt: "not-found"
 });
 </script>
 

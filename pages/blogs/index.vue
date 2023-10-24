@@ -22,7 +22,7 @@
 						:tags="post.tags"
 					/>
 				</template>
-				<BlogArchive v-if="postData.length <= 0" title="" image="" />
+				<BlogArchive v-if="postData.length <= 0" />
 			</div>
 			<template #fallback>
 				<BlogLoader />

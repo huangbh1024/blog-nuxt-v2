@@ -11,11 +11,11 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
 	path: "/",
-	title: "",
-	createdAt: "",
-	description: "",
-	image: "",
-	alt: "",
+	title: "没有找到相关内容",
+	createdAt: "...",
+	description: "没有找到相关内容",
+	image: "/not-found.jpg",
+	alt: "not-found",
 	tags: () => []
 });
 </script>
