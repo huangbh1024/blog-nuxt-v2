@@ -112,9 +112,6 @@ devDependencies:
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
-  vue-gtag-next:
-    specifier: ^1.14.0
-    version: registry.npmmirror.com/vue-gtag-next@1.14.0(vue@3.3.4)
   vue-router:
     specifier: ^4.2.5
     version: registry.npmmirror.com/vue-router@4.2.5(vue@3.3.4)
@@ -13043,17 +13040,6 @@ packages:
       semver: registry.npmmirror.com/semver@7.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  registry.npmmirror.com/vue-gtag-next@1.14.0(vue@3.3.4):
-    resolution: {integrity: sha512-iJl+cOG2GU5NuxqzSSIpt03WVOvZqyKB9TOy7d55KiuvRklcnb2nlqxW5B/a3/sbIt7fla+XEkRyMCcoz0zAHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-gtag-next/-/vue-gtag-next-1.14.0.tgz}
-    id: registry.npmmirror.com/vue-gtag-next/1.14.0
-    name: vue-gtag-next
-    version: 1.14.0
-    peerDependencies:
-      vue: ^3.0.0-rc.11
-    dependencies:
-      vue: registry.npmmirror.com/vue@3.3.4
     dev: true
 
   registry.npmmirror.com/vue-router@4.2.5(vue@3.3.4):
