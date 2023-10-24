@@ -9,27 +9,32 @@
 				class="block w-full bg-[#F1F2F4] dark:bg-zinc-800 dark:placeholder-zinc-500 text-zinc-300 rounded-md border-gray-300 dark:border-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
 			/>
 		</div>
-		<div v-auto-animate class="space-y-5 my-5">
-			<template v-if="pending">
+		<ClientOnly>
+			<div v-auto-animate class="space-y-5 my-5">
+				<template v-if="pending || loading">
+					<BlogLoader />
+					<BlogLoader />
+				</template>
+				<template v-else>
+					<BlogArchive
+						v-for="post in postData"
+						:key="post.title"
+						:path="post.path"
+						:title="post.title"
+						:created-at="post.createdAt"
+						:description="post.description"
+						:image="post.image"
+						:alt="post.alt"
+						:tags="post.tags"
+					/>
+					<BlogArchive v-if="postData.length === 0" />
+				</template>
+			</div>
+			<template #fallback>
 				<BlogLoader />
 				<BlogLoader />
 			</template>
-			<template v-else>
-				<BlogArchive
-					v-for="post in postData"
-					:key="post.title"
-					:path="post.path"
-					:title="post.title"
-					:created-at="post.createdAt"
-					:description="post.description"
-					:image="post.image"
-					:alt="post.alt"
-					:tags="post.tags"
-				/>
-				<BlogArchive v-if="postData.length === 0" />
-			</template>
-		</div>
-
+		</ClientOnly>
 		<div class="flex justify-center items-center space-x-6">
 			<button :disabled="page <= 1" @click="onPreviousPageClick">
 				<Icon
@@ -54,6 +59,7 @@ import dayjs from "dayjs";
 const size = ref(3);
 const page = ref(1);
 const keyword = ref("");
+const loading = ref(false);
 const { data, refresh, pending } = await useAsyncData("postList", () =>
 	$fetch("/api/blog", {
 		method: "GET",
@@ -69,9 +75,13 @@ const postData = computed(
 			alt: item.title
 		})) ?? []
 );
-const search = useDebounce(() => refresh(), 500);
+const search = useDebounce(() => {
+	refresh();
+	loading.value = false;
+}, 500);
 watch(keyword, () => {
 	page.value = 1;
+	loading.value = true;
 	// 防抖 防止接口请求过多
 	search();
 });

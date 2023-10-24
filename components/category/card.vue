@@ -1,7 +1,6 @@
 <template>
 	<div
-		class="text-[#F1F2F4] px-5 py-3 rounded hover:underline hover:scale-[1.05] transition-all duration-500"
-		:style="{ background: picAColor }"
+		class="text-[#F1F2F4] px-5 py-3 rounded randbgcolor hover:underline hover:scale-[1.05] transition-all duration-500"
 	>
 		<NuxtLink :to="`/categories/${id}`" class="text-xl font-extrabold">
 			<h1>#{{ title }}</h1>
@@ -38,3 +37,8 @@ const getRandomInt = (min: number, max: number) => {
 
 const picAColor = ref(`${color.at(getRandomInt(0, 8))}`);
 </script>
+<style scoped>
+.randbgcolor {
+	background-color: v-bind(picAColor);
+}
+</style>
