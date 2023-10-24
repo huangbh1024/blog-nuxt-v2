@@ -34,10 +34,8 @@
 <script lang="ts" setup>
 import dayjs from "dayjs";
 import { siteConfig } from "~/configs/site.config";
-import type { Blog } from "~/types/blog";
-const { data } = await useAsyncData<{ records: Blog[]; total: number }>(
-	"recentPost",
-	() => $fetch("/api/blog", { method: "GET", query: { page: 1, size: 3 } })
+const { data } = await useAsyncData("recentPost", () =>
+	$fetch("/api/blog", { method: "GET", query: { page: 1, size: 3 } })
 );
 const recentPostData = computed(
 	() =>

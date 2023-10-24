@@ -50,14 +50,10 @@
 </template>
 <script lang="ts" setup>
 import dayjs from "dayjs";
-import type { Blog } from "~/types/blog";
 const size = ref(3);
 const page = ref(1);
 const keyword = ref("");
-const { data, refresh } = await useAsyncData<{
-	records: Blog[];
-	total: number;
-}>("postList", () =>
+const { data, refresh } = await useAsyncData("postList", () =>
 	$fetch("/api/blog", {
 		method: "GET",
 		query: { page: page.value, size: size.value, keyword: keyword.value }

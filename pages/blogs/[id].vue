@@ -21,10 +21,9 @@
 <script lang="ts" setup>
 import dayjs from "dayjs";
 import { parse } from "./parse";
-import type { Blog } from "~/types/blog";
 const route = useRoute();
 const id = computed(() => Number(route.params.id as string));
-const { data } = await useAsyncData<Blog>("detail", () =>
+const { data } = await useAsyncData("detail", () =>
 	$fetch(`/api/blog/${id.value}`, { method: "GET" })
 );
 
