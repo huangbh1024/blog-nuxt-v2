@@ -12,7 +12,6 @@ import typescript from "highlight.js/lib/languages/typescript";
 import java from "highlight.js/lib/languages/java";
 import { markedHighlight } from "marked-highlight";
 
-import "highlight.js/styles/monokai-sublime.css";
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("js", javascript);
 hljs.registerLanguage("sql", sql);

@@ -19,5 +19,6 @@ export default defineNuxtConfig({
 		fallback: "light",
 		classSuffix: "",
 		dataValue: "theme"
-	}
+	},
+	css: ["highlight.js/styles/monokai-sublime.css"]
 });
