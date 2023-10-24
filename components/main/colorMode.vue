@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="dropdown dropdown-left fixed top-[50%] right-0 translate-y-[-50%]"
+		class="dropdown dropdown-left fixed top-[50%] right-0 translate-y-[-50%] z-[999]"
 	>
 		<ClientOnly>
 			<label
