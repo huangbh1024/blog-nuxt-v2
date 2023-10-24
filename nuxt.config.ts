@@ -17,7 +17,8 @@ export default defineNuxtConfig({
 			viewport: "width=device-width,initial-scale=1",
 			title: "黄某人's Blog",
 			meta: [{ name: "description", content: "黄某人的博客" }]
-		}
+		},
+		cdnURL: "https://cdn.huangbh.cn"
 	},
 	typescript: { strict: true },
 
