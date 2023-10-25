@@ -1,7 +1,7 @@
 <template>
 	<main class="container max-w-5xl mx-auto text-zinc-600">
 		<ArchiveHero />
-		<ul>
+		<ul class="px-12">
 			<template v-for="item in data" :key="item.year">
 				<div class="select-none relative h-20 pointer-events-none">
 					<span
@@ -37,6 +37,6 @@ const { data } = await useAsyncData("archives", () =>
 }
 .text-stroke-hex-aaa {
 	--un-text-stroke-opacity: 1;
-	-webkit-text-stroke-color: rgb(170 170 170 / var(--un-text-stroke-opacity));
+	-webkit-text-stroke-color: rgb(100 100 100 / var(--un-text-stroke-opacity));
 }
 </style>
