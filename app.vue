@@ -7,9 +7,7 @@
 	</div>
 </template>
 
-<script lang="ts" setup>
-$fetch("http://127.0.0.1:7001/blog/archive");
-</script>
+<script lang="ts" setup></script>
 <style>
 html.dark {
 	color-scheme: dark;
