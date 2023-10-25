@@ -1,9 +1,6 @@
 import { Blog } from "~/types/blog";
 import type { Response } from "~/types/reponse";
 export default defineEventHandler(async event => {
-	const baseURL = import.meta.dev
-		? "http://127.0.0.1:7001"
-		: "https://api.huangbh.cn";
 	const {
 		page = 1,
 		size = 3,
@@ -11,6 +8,7 @@ export default defineEventHandler(async event => {
 		order = "ASC",
 		keyword = ""
 	} = getQuery(event);
+	const baseURL = event.context.baseURL;
 	const { data } = await $fetch<Response<{ records: Blog[]; total: number }>>(
 		`${baseURL}/blog`,
 		{
