@@ -12,7 +12,7 @@
 			<div
 				class="prose prose-pre:max-w-xs sm:prose-pre:max-w-full prose-sm sm:prose-base md:prose-lg prose-h1:no-underline max-w-5xl mx-auto prose-zinc dark:prose-invert prose-img:rounded-lg"
 			>
-				<main v-html="parseHtml"></main>
+				<main v-dompurify-html="parseHtml"></main>
 			</div>
 		</div>
 		<BlogToc />
@@ -32,5 +32,10 @@ const detail = computed(() => ({
 	alt: data.value?.title
 }));
 
-const { parseHtml } = useParse(detail.value!.content!.replace(/\\n/g, "\n"));
+// 转义\n \r \t 等字符
+const escape = (str: string) => {
+	return str.replace(/\\n/g, "\n").replace(/\\r/g, "\r").replace(/\\t/g, "\t");
+};
+
+const { parseHtml } = useParse(escape(detail.value!.content as string));
 </script>
