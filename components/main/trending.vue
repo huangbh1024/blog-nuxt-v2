@@ -33,7 +33,8 @@
 
 <script lang="ts" setup>
 import dayjs from "dayjs";
-import { siteConfig } from "~/configs/site.config";
+import { useSiteConfig } from "~/configs/useSiteConfig";
+const { siteConfig } = useSiteConfig();
 const { data } = await useAsyncData("trendingPosts", () =>
 	$fetch("/api/blog", {
 		method: "GET",

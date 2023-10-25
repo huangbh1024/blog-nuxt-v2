@@ -7,7 +7,8 @@ export default defineNuxtConfig({
 		"nuxt-icon",
 		"@nuxt/image",
 		"@nuxtjs/color-mode",
-		"nuxt-lodash"
+		"nuxt-lodash",
+		"@nuxtjs/i18n"
 	],
 	app: {
 		pageTransition: { name: "page", mode: "out-in" },
@@ -28,5 +29,6 @@ export default defineNuxtConfig({
 		classSuffix: "",
 		dataValue: "theme"
 	},
+	i18n: { vueI18n: "./i18n.config.ts" },
 	css: ["highlight.js/styles/monokai-sublime.css"]
 });

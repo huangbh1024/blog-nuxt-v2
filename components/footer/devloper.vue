@@ -4,7 +4,7 @@
 			黄某人
 		</p>
 		<p class="py-2 dark:text-zinc-300">
-			一个前端开发从业者，喜欢编程，喜欢分享，喜欢记录生活点滴
+			{{ $t("base.authorDescription") }}
 		</p>
 		<div class="my-3 space-x-3 pb-3">
 			<NuxtLink

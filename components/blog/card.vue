@@ -9,15 +9,21 @@ interface Props {
 	alt?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const { t } = useI18n();
+
+const props = withDefaults(defineProps<Props>(), {
 	path: "/",
-	title: "没有找到相关内容",
+	title: "",
 	createdAt: "...",
-	description: "没有找到相关内容",
+	description: "",
 	image: "/not-found.jpg",
 	tags: () => [],
 	alt: "not-found"
 });
+const titleWithDefault = computed(() => props.title || t("base.contentEmpty"));
+const descriptionWithDefault = computed(
+	() => props.description || t("base.contentEmpty")
+);
 </script>
 
 <template>
@@ -46,15 +52,15 @@ withDefaults(defineProps<Props>(), {
 				<h2
 					class="text-xl font-semibold text-black dark:text-zinc-300 pb-1 group-hover:text-sky-700 dark:group-hover:text-sky-400"
 				>
-					{{ title }}
+					{{ titleWithDefault }}
 				</h2>
 				<p class="text-ellipsis line-clamp-2 text-base">
-					{{ description }}
+					{{ descriptionWithDefault }}
 				</p>
 				<div
 					class="flex group-hover:underline text-sky-700 dark:text-sky-400 items-center py-2"
 				>
-					<p>阅读更多</p>
+					<p>{{ $t("base.readMore") }}</p>
 					<LogoArrow />
 				</div>
 			</div>

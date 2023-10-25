@@ -19,5 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import { siteConfig } from "~/configs/site.config";
+import { useSiteConfig } from "~/configs/useSiteConfig";
+const { siteConfig } = useSiteConfig();
 </script>

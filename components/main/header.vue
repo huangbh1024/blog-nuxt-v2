@@ -25,7 +25,8 @@
 </template>
 
 <script lang="ts" setup>
-import { siteConfig } from "~/configs/site.config";
+import { useSiteConfig } from "~/configs/useSiteConfig";
+const { siteConfig } = useSiteConfig();
 const route = useRoute();
 const path = computed(() => route.fullPath.replace("/", ""));
 </script>

@@ -33,7 +33,8 @@
 
 <script lang="ts" setup>
 import dayjs from "dayjs";
-import { siteConfig } from "~/configs/site.config";
+import { useSiteConfig } from "~/configs/useSiteConfig";
+const { siteConfig } = useSiteConfig();
 const { data } = await useAsyncData("recentPost", () =>
 	$fetch("/api/blog", { method: "GET", query: { page: 1, size: 3 } })
 );

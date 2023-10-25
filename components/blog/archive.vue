@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const { t } = useI18n();
 interface Props {
 	path?: string;
 	title?: string;
@@ -9,15 +10,19 @@ interface Props {
 	tags?: Array<string>;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	path: "/",
-	title: "没有找到相关内容",
+	title: "",
 	createdAt: "...",
-	description: "没有找到相关内容",
+	description: "",
 	image: "/not-found.jpg",
 	alt: "not-found",
 	tags: () => []
 });
+const titleWithDefault = computed(() => props.title || t("base.contentEmpty"));
+const descriptionWithDefault = computed(
+	() => props.description || t("base.contentEmpty")
+);
 </script>
 
 <template>
@@ -36,10 +41,10 @@ withDefaults(defineProps<Props>(), {
 				<h2
 					class="text-xl font-semibold text-black dark:text-zinc-300 pb-1 group-hover:text-sky-700 dark:group-hover:text-sky-400"
 				>
-					{{ title }}
+					{{ titleWithDefault }}
 				</h2>
 				<p class="text-ellipsis line-clamp-2">
-					{{ description }}
+					{{ descriptionWithDefault }}
 				</p>
 				<div
 					class="text-black dark:text-zinc-300 text-sm mt-2 mb-1 md:flex md:space-x-6"
@@ -58,7 +63,7 @@ withDefaults(defineProps<Props>(), {
 				<div
 					class="flex group-hover:underline text-sky-700 dark:text-sky-400 items-center pt-2"
 				>
-					<p>阅读更多</p>
+					<p>{{ $t("base.readMore") }}</p>
 					<LogoArrow />
 				</div>
 			</div>
