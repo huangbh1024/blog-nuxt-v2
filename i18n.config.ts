@@ -25,6 +25,10 @@ export default defineI18nConfig(() => ({
 				title: "所有分类",
 				content: "在这里接受知识的洗礼吧！"
 			},
+			archiveInfo: {
+				title: "所有归档",
+				content: "在这里接受知识的洗礼吧！"
+			},
 			base: {
 				readMore: "阅读更多",
 				backToHome: "返回主页",
@@ -58,6 +62,10 @@ export default defineI18nConfig(() => ({
 			},
 			categoryInfo: {
 				title: "All Categories",
+				content: "Receive the baptism of knowledge here!"
+			},
+			archiveInfo: {
+				title: "All Archives",
 				content: "Receive the baptism of knowledge here!"
 			},
 			base: {

@@ -21,6 +21,10 @@ export const useSiteConfig = () => {
 		categoryInfo: {
 			title: t("categoryInfo.title"),
 			content: t("categoryInfo.content")
+		},
+		archiveInfo: {
+			title: t("archiveInfo.title"),
+			content: t("archiveInfo.content")
 		}
 	}));
 	return { siteConfig };
