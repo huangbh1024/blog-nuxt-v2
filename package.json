@@ -65,6 +65,7 @@
 		"marked": "^9.1.2",
 		"marked-highlight": "^2.0.6",
 		"normalize.css": "^8.0.1",
+		"nuxt-socket-io": "^3.0.13",
 		"vue-content-loader": "^2.0.1",
 		"vue-dompurify-html": "^4.1.4"
 	}

@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxtjs/color-mode",
 		"nuxt-lodash",
-		"@nuxtjs/i18n"
+		"@nuxtjs/i18n",
+		"nuxt-socket-io"
 	],
 	app: {
 		pageTransition: { name: "page", mode: "out-in" },
@@ -30,5 +31,13 @@ export default defineNuxtConfig({
 		dataValue: "theme"
 	},
 	i18n: { vueI18n: "./i18n.config.ts" },
-	css: ["highlight.js/styles/monokai-sublime.css"]
+	css: ["highlight.js/styles/monokai-sublime.css"],
+	io: {
+		sockets: [
+			{
+				name: "onlineCount",
+				url: "https://api.huangbh.cn/onlineCount"
+			}
+		]
+	}
 });
