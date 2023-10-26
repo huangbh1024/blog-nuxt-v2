@@ -32,9 +32,15 @@ const detail = computed(() => ({
 	alt: data.value?.title
 }));
 
-// 转义\n \r \t 等字符
 const escape = (str: string) => {
-	return str.replace(/\\n/g, "\n").replace(/\\r/g, "\r").replace(/\\t/g, "\t");
+	return str
+		.replace(/\\n/g, "\n")
+		.replace(/\\r/g, "\r")
+		.replace(/\\t/g, "\t")
+		.replace(/\\b/g, "\b")
+		.replace(/\\f/g, "\f")
+		.replace(/\\"/g, '"')
+		.replace(/\\'/g, "'");
 };
 
 const { parseHtml } = useParse(escape(detail.value!.content as string));
