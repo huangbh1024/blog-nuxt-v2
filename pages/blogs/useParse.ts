@@ -8,8 +8,8 @@ import json from "highlight.js/lib/languages/json";
 import less from "highlight.js/lib/languages/less";
 import scss from "highlight.js/lib/languages/scss";
 import xml from "highlight.js/lib/languages/xml";
-import typescript from "highlight.js/lib/languages/typescript";
 import java from "highlight.js/lib/languages/java";
+import typescript from "highlight.js/lib/languages/typescript";
 import { markedHighlight } from "marked-highlight";
 
 hljs.registerLanguage("javascript", javascript);
